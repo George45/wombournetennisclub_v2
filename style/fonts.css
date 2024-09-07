@@ -1,0 +1,17 @@
+/*
+@font-face {
+  font-family: '';
+  src: url('../fonts/webfont.woff2') format('woff2'), - Super Modern Browsers
+       url('../fonts/webfont.woff') format('woff'), - Pretty Modern Browsers
+       url('../fonts/webfont.ttf') format('truetype'); - Safari, Android, iOS
+}
+*/
+
+@font-face {
+    font-family: 'rubikregular';
+    src: url('../fonts/rubik/rubik-regular.woff2') format('woff2'),
+         url('../fonts/rubik/rubik-regular.woff') format('woff'),
+         url('../fonts/rubik/rubik-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
