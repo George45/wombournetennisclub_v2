@@ -357,8 +357,18 @@ section.news .card .card-subtitle{
 	font-weight: 700;
 }
 section.news .card .card-img{
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	border-radius: 24px;
+	padding: 1.25rem;
+}
+section.news .card .card-body{
+	padding-top: 0;
+}
+
+
+
+section.get-involved .card-title,
+section.get-involved .card-text {
+	text-shadow: 1px 1px 3px black;
 }
 
 
@@ -447,6 +457,7 @@ section.sponsors .carousel-data .sponsor-wrap:not(.slick-slide){
 	margin-bottom: 1em;
 }
 section.sponsors .carousel-data .sponsor-img{
+	display: inline;
 	max-width: 100%;
 }
 section.sponsors .carousel-data .sponsor-name{
