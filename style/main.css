@@ -229,7 +229,9 @@ section.banner .banner-summary{
 
 /*.carousel {}*/
 /*.carousel .carousel-data {}*/
-/*.carousel .carousel-actions{}*/
+.carousel .carousel-actions{
+	padding: .5em 0;
+}
 .carousel .carousel-actions .carousel-next,
 .carousel .carousel-actions .carousel-prev{
 	border: none;
@@ -545,7 +547,6 @@ section.content figure figcaption{
 	font-style: italic;
 	padding: .5rem .75rem;
 }
-/*section.content .content-main-wrap{}*/
 section.content .content-main{
 	margin-bottom: 1rem;
 }
@@ -586,9 +587,6 @@ section.content .content-main .content-main-body-footer .content-footer-date{
 }
 /*@media screen and (max-width: 767px){}*/
 @media screen and (min-width: 768px){
-	section.content .content-main-wrap{
-		padding-left: 0;
-	}
 	section.content figure iframe{
 		height: 246px;
 	}
@@ -804,12 +802,12 @@ section.content .content-main.bracket .bracket-round{
 	height: unset;
 	margin: 0 16px 0 0;
 }
+section.content .content-main.bracket .bracket-round .bracket-match:last-child{
+	margin-bottom: 0;
+}
 section.content .content-main.bracket .bracket-match{
 	margin-bottom: 1em;
 	position: relative;
-}
-section.content .content-main.bracket .bracket-round .bracket-match:last-child{
-	margin-bottom: 0;
 }
 section.content .content-main.bracket .bracket-match hr{
 	background: #dee2e6;
@@ -819,8 +817,8 @@ section.content .content-main.bracket .bracket-match hr{
 }
 section.content .content-main.bracket .bracket-match hr:before{
 	background: #f8f9fa;
+	color: #858585;
 	content: "vs";
-	color: #1976d2;
 	left: calc(50% - 11px);
 	font-size: 14px;
 	height: 9px;
@@ -834,27 +832,22 @@ section.content .content-main.bracket .bracket-match hr:before{
 section.content .content-main.bracket .bracket-player{
 	align-items: center;
 	background: #f8f9fa;
-	color: #858585;
 	display: flex;
 	flex: 1 auto;
+	justify-content: center;
 	min-height: 48px;
 	line-height: 20px;
-	padding: 4px 12px 4px 20px;
+	padding: 4px 12px 4px 17px;
 	position: relative;
-}
-section.content .content-main.bracket .bracket-player:first-child{
-	border-top: 1px solid #f8f9fa;
-}
-section.content .content-main.bracket .bracket-player:last-child{
-	border-bottom: 1px solid #f8f9fa;
+	text-align: center;
 }
 section.content .content-main.bracket .bracket-player:before{
-	background: #858585;
+	background: #1976d2;
 	content: "";
-	height: calc(100% + 2px);
+	height: 100%;
 	left: 0;
 	position: absolute;
-	top: -1px;
+	top: 0;
 	width: 5px;
 }
 section.content .content-main.bracket .bracket-player.winner{
@@ -862,6 +855,14 @@ section.content .content-main.bracket .bracket-player.winner{
 }
 section.content .content-main.bracket .bracket-player.winner:before{
 	background: #1976d2;
+}
+section.content .content-main.bracket .bracket-match.bye .bracket-player,
+section.content .content-main.bracket .bracket-player.loser{
+	color: #858585;
+}
+section.content .content-main.bracket .bracket-match.bye .bracket-player:before,
+section.content .content-main.bracket .bracket-player.loser:before{
+	background: #858585;
 }
 /*@media screen and (max-width: 575px){}*/
 /*@media screen and (min-width: 576px){}*/
