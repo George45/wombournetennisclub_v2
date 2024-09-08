@@ -382,6 +382,7 @@ section.card-tiles .card .card-img{
 
 section.events .list-group{
 	max-height: 350px;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 section.events .list-group h5{
