@@ -178,8 +178,14 @@ section.banner .banner-item{
 	background-repeat: no-repeat;
 	background-size: cover;
 	box-shadow: inset 16px 16px 16px rgba(0, 0, 0, 0.3), inset -16px -16px 16px rgba(0, 0, 0, 0.3);
+	display: flex;
 	height: 100%;
+	min-height: 410px;
 	padding: 111px 0 32px;
+}
+section.banner .banner-item > div{
+	align-self: center;
+	flex: 1;
 }
 section.banner .banner-content{
 	color: #F3F7F6;
