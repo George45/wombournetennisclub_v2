@@ -479,8 +479,8 @@
 				let eventDate = new Date($(this).data('date'));
 
 				if (today > eventDate) {
-					$(this).addClass('d-none').removeClass('active');
-					$('#' + $(this).attr('id') + '-info').addClass('d-none').removeClass('active');
+					$(this).remove();
+					$('#' + $(this).attr('id') + '-info').remove();
 				} else {
 					if (!hasSetActive) {
 						$(this).addClass('active');
