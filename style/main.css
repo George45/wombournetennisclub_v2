@@ -446,7 +446,12 @@ section.sm-feeds .fb-wrap iframe{
 
 
 /*section.sponsors{}*/
+section.sponsors .slick-track{
+	display: flex;
+}
 section.sponsors .carousel-data .sponsor-wrap{
+	align-self: center;
+	flex: 1;
 	margin: 0 .5em;
 	text-align: center;
 }
