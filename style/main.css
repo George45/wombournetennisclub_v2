@@ -874,11 +874,11 @@ section.content .content-main.bracket .bracket-player.champion{
 	font-weight: bold;
 	font-size: 18px;
 }
-section.content .content-main.bracket .bracket-player.champion .fa{
-	padding-right: .5rem;
-}
 section.content .content-main.bracket .bracket-player.champion:before{
 	background: #d4af37;
+}
+section.content .content-main.bracket .bracket-player.champion .fa{
+	padding-right: .5rem;
 }
 section.content .content-main.bracket .bracket-player:not(.champion) .fa{
 	display: none;
