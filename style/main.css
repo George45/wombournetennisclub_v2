@@ -178,8 +178,14 @@ section.banner .banner-item{
 	background-repeat: no-repeat;
 	background-size: cover;
 	box-shadow: inset 16px 16px 16px rgba(0, 0, 0, 0.3), inset -16px -16px 16px rgba(0, 0, 0, 0.3);
+	display: flex;
 	height: 100%;
+	min-height: 410px;
 	padding: 111px 0 32px;
+}
+section.banner .banner-item > div{
+	align-self: center;
+	flex: 1;
 }
 section.banner .banner-content{
 	color: #F3F7F6;
@@ -440,7 +446,12 @@ section.sm-feeds .fb-wrap iframe{
 
 
 /*section.sponsors{}*/
+section.sponsors .slick-track{
+	display: flex;
+}
 section.sponsors .carousel-data .sponsor-wrap{
+	align-self: center;
+	flex: 1;
 	margin: 0 .5em;
 	text-align: center;
 }
@@ -857,6 +868,20 @@ section.content .content-main.bracket .bracket-player.loser{
 section.content .content-main.bracket .bracket-match.bye .bracket-player:before,
 section.content .content-main.bracket .bracket-player.loser:before{
 	background: #858585;
+}
+section.content .content-main.bracket .bracket-player.champion{
+	color: #d4af37;
+	font-weight: bold;
+	font-size: 18px;
+}
+section.content .content-main.bracket .bracket-player.champion:before{
+	background: #d4af37;
+}
+section.content .content-main.bracket .bracket-player.champion .fa{
+	padding-right: .5rem;
+}
+section.content .content-main.bracket .bracket-player:not(.champion) .fa{
+	display: none;
 }
 /*@media screen and (max-width: 575px){}*/
 /*@media screen and (min-width: 576px){}*/
