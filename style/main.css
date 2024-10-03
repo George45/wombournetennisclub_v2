@@ -896,37 +896,7 @@ section.content .content-main.bracket .bracket-player:not(.champion) .fa{
 
 /*section.content .content-main.prev-winners{}*/
 /*section.content .content-main.prev-winners .content-main-body{}*/
-/* section.content .content-main.prev-winners .card{
-	border-radius: 0;
-}
-section.content .content-main.prev-winners .content-main-body .card:not(:last-child){
-	border-bottom: 0;
-}
-section.content .content-main.prev-winners .content-main-body .card:first-child,
-section.content .content-main.prev-winners .content-main-body .card:first-child .card-header{
-	border-radius: .25rem .25rem 0 0;
-}
-section.content .content-main.prev-winners .content-main-body .card:last-child,
-section.content .content-main.prev-winners .content-main-body .card:last-child .card-header{
-	border-radius: 0 0 .25rem .25rem;
-}
-section.content .content-main.prev-winners .card .card-header{
-	border-bottom: 0;
-	font-weight: bold;
-	padding: .75rem 2.5rem;
-	position: relative;
-	text-align: center;
-}
-section.content .content-main.prev-winners .card .card-header .fa{
-	right: 12px;
-	position: absolute;
-	top: calc(50% - 8px);
-	transition: transform .35s ease;
-}
-section.content .content-main.prev-winners .card .card-header[aria-expanded="false"] .fa{
-	transform: rotate(-90deg);
-}
-section.content .content-main.prev-winners .prev-winners-group{
+section.content .content-main.prev-winners .list-group-item{
 	display: flex;
 	flex-direction: row;
 }
@@ -934,7 +904,7 @@ section.content .content-main.prev-winners .prev-winners-year{
 	align-self: center;
 	font-weight: bold;
 	margin-right: 16px;
-} */
+}
 /*section.content .content-main.prev-winners .prev-winners-players{}*/
 /*@media screen and (max-width: 575px){}*/
 /*@media screen and (min-width: 576px){}*/
