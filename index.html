@@ -91,6 +91,17 @@
 					<div class="row carousel-data">
 						<div class="col-md-4 col-sm-6 col-12">
 							<div class="card">
+								<img src="img/news/halloween.jpg" class="card-img">
+								<div class="card-body">
+									<h5 class="card-title">Junior Halloween Monster Smash Tournament</h5>
+									<h6 class="card-subtitle mb-2">4th October 2024</h6>
+									<p class="card-text">Boo!! Come and join us for some spooky Monster Smash fun. 2pm-5pm for all players. This is a members only event. Medals, prizes and certificates for the winners. Feel free to dress up for the occasion!</p>
+									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/95f00053-a681-4012-90a8-374a18c05f44" target="_blank" class="btn btn-primary">Read more</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-12">
+							<div class="card">
 								<img src="img/news/trophies.png" class="card-img">
 								<div class="card-body">
 									<h5 class="card-title">Club Championship Finals Results</h5>
@@ -119,17 +130,6 @@
 									<h6 class="card-subtitle mb-2">18th September 2024</h6>
 									<p class="card-text">We have three big events for you to look forward to: Club Championships finals weekend, Presentation Evening & the Tennis Section AGM.</p>
 									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/8243924d-a88f-4786-befd-38ac5b08f87d" target="_blank" class="btn btn-primary">Read more</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 col-12">
-							<div class="card">
-								<img src="img/news/halloween.jpg" class="card-img">
-								<div class="card-body">
-									<h5 class="card-title">Junior Halloween Monster Smash Tournament</h5>
-									<h6 class="card-subtitle mb-2">14th September 2024</h6>
-									<p class="card-text">Boo!! Come and join us for some spooky Monster Smash fun. 2pm-4pm for all players. This is a members only event. Medals, prizes and certificates for the winners. Feel free to dress up for the occasion!</p>
-									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/4652839f-3416-4911-94bf-073585acdb5b" target="_blank" class="btn btn-primary">Read more</a>
 								</div>
 							</div>
 						</div>
@@ -225,10 +225,6 @@
 					<div class="row">
 						<div class="col-5">
 							<div id="event-list" class="list-group">
-								<a class="list-group-item list-group-item-action" id="event-2" data-toggle="list" href="#event-2-info" role="tab" aria-controls="event-2" data-date="28 Sep 2024">
-									<h5 class="mb-1">Club Championships Finals</h5>
-									<small>28th September 2024</small>
-								</a>
 								<a class="list-group-item list-group-item-action"id="event-3" data-toggle="list" href="#event-3-info" role="tab" aria-controls="event-3" data-date="20 Oct 2024">
 									<h5 class="mb-1">Junior Halloween Monster Smash Tournament</h5>
 									<small>20th October 2024</small>
@@ -249,26 +245,11 @@
 						</div>
 						<div class="col-7 pl-0 pl-md-3">
 							<div class="tab-content">
-								<div class="tab-pane" id="event-2-info" role="tabpanel" aria-labelledby="event-2">
-									<h2 class="text-primary">Club Championships Finals</h2>
-									<h6>28th September 2024</h6>
-									<p>Our annual Club Championships finals tournaments conclude this weekend!. View the <a href="tournaments.html">tournament brackets</a>.</p>
-									<p>This years events are:</p>
-									<ul>
-										<li><a href="tournaments/club-champs-mens-singles.html">Men's Singles</a></li>
-										<li><a href="tournaments/club-champs-mens-doubles.html">Men's Doubles</a></li>
-										<li><a href="tournaments/club-champs-mens-veteran-singless.html">Men's Veterans Singles</a></li>
-										<li><a href="tournaments/club-champs-ladies-singles.html">Ladies Singles</a></li>
-										<li><a href="tournaments/club-champs-ladies-doubles.html">Ladies Doubles</a></li>
-										<li><a href="tournaments/club-champs-mixed-doubles.html">Mixed Doubles</a></li>
-										<li><a href="tournaments/club-champs-mixed-veterans-doubles.html">Mixed Veterans Doubles</a></li>
-									</ul>
-								</div>
 								<div class="tab-pane" id="event-3-info" role="tabpanel" aria-labelledby="event-3">
 									<h2 class="text-primary">Junior Halloween Monster Smash Tournament</h2>
 									<h6>20th October 2024</h6>
-									<p>Boo!! Come and join us for some spooky Monster Smash fun. 2pm-4pm for all players. This is a members only event. Medals, prizes and certificates for the winners. Feel free to dress up for the occasion!</p>
-									<p><a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/4652839f-3416-4911-94bf-073585acdb5b" target="_blank">Register for this event.</a></p>
+									<p>Boo!! Come and join us for some spooky Monster Smash fun. 2pm-5pm for all players. This is a members only event. Medals, prizes and certificates for the winners. Feel free to dress up for the occasion!</p>
+									<p><a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/95f00053-a681-4012-90a8-374a18c05f44" target="_blank">Register for this event.</a></p>
 								</div>
 								<div class="tab-pane" id="event-4-info" role="tabpanel" aria-labelledby="event-4">
 									<h2 class="text-primary">Presentation Evening</h2>
@@ -470,8 +451,8 @@
 				let eventDate = new Date($(this).data('date'));
 
 				if (today > eventDate) {
-					$(this).remove();
 					$('#' + $(this).attr('id') + '-info').remove();
+					$(this).remove();
 				} else {
 					if (!hasSetActive) {
 						$(this).addClass('active');
