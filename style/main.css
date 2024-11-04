@@ -826,7 +826,7 @@ section.content .content-main.bracket .bracket-match hr:before{
 	content: "vs";
 	left: calc(50% - 11px);
 	font-size: 14px;
-	height: 9px;
+	height: 10px;
 	line-height: 0.5;
 	overflow: hidden;
 	position: absolute;
@@ -857,6 +857,7 @@ section.content .content-main.bracket .bracket-player:before{
 }
 section.content .content-main.bracket .bracket-player.winner{
 	color: #1976d2;
+	font-weight: 400;
 }
 section.content .content-main.bracket .bracket-player.winner:before{
 	background: #1976d2;
