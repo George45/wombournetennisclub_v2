@@ -65,6 +65,10 @@ section.section-bg .section-bg-img{
 section.section-bg .section-bg-img.section-bg-img-filter{
 	filter: blur(2px) grayscale(100%);
 }
+/** For image alt text */
+section.section-bg .card-img {
+	color: white;
+}
 section .section-title{
 	font-weight: bold;
 	margin-bottom: 1rem;
