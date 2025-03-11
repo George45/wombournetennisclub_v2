@@ -344,6 +344,9 @@ section.feature .text-light .btn{
 
 
 
+section.news{
+	min-height: 880px;
+}
 section.news .card{
 	margin-bottom: 1rem;
 }
