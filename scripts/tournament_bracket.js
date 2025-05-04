@@ -9,7 +9,7 @@ const bracketSlider = $('.carousel-data').on('init', function() {
     responsive: [
         {breakpoint: 992, settings: {slidesToShow: 2, slidesToScroll: 1}},
         {breakpoint: 768, settings: {slidesToShow: 1, slidesToScroll: 1}}
-    ]
+    ],
 }).on('beforeChange', function() {
     $('.carousel-data').removeClass('bracket-height-fix');
 }).on('afterChange', function() {
@@ -17,21 +17,8 @@ const bracketSlider = $('.carousel-data').on('init', function() {
 });
 
 function multiSlideHeightFix(slider) {
-    let tallest = 0;
-
     setTimeout(function() {
-        $('.slick-track .slick-active', slider).each(function() {
-            let height = $(this).outerHeight();
-
-            if (height > tallest) {
-                tallest = height;
-            }
-        });
-
-        $('.slick-list', slider).height(tallest);
-    }, 10);
-
-    setTimeout(function() {
+        $('.slick-list', slider).height($('.slick-track .slick-active', slider).outerHeight());
         $('.carousel-data').addClass('bracket-height-fix');
     }, 10);
 }
