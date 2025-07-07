@@ -44,7 +44,7 @@
 								<a class="nav-link" href="https://clubspark.lta.org.uk/WombourneTennisClub/News" target="_blank"><i class="fa fa-list nav-icon"></i>News</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="https://clubspark.lta.org.uk/WombourneTennisClub/Events" target="_blank"><i class="fa fa-calendar nav-icon"></i>Events</a>
+								<a class="nav-link" href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2" target="_blank"><i class="fa fa-calendar nav-icon"></i>Events</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="https://clubspark.lta.org.uk/WombourneTennisClub/Teams" target="_blank"><i class="fa fa-users nav-icon"></i>Teams</a>
@@ -297,7 +297,7 @@
 						<ul class="footer-list mb-3 mb-md-0">
 							<li class="footer-list-item"><a href="../index.html" class="footer-list-link text-light">Home</a></li>
 							<li class="footer-list-item"><a href="https://clubspark.lta.org.uk/WombourneTennisClub/News" class="footer-list-link text-light" target="_blank">News</a></li>
-							<li class="footer-list-item"><a href="https://clubspark.lta.org.uk/WombourneTennisClub/Events" class="footer-list-link text-light" target="_blank">Events</a></li>
+							<li class="footer-list-item"><a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2" class="footer-list-link text-light" target="_blank">Events</a></li>
 							<li class="footer-list-item"><a href="https://clubspark.lta.org.uk/WombourneTennisClub/Coaching" class="footer-list-link text-light" target="_blank">Coaching</a></li>
 							
 						</ul>
@@ -319,7 +319,9 @@
 					<div class="col-6 col-md-3">
 						<ul class="footer-list d-sm-flex d-md-block">
 							<li class="footer-list-item">
-								<a href="../index.html" class="footer-list-img"><img src="../img/logos/wctb.png"></a>
+								<a href="../index.html" class="footer-list-img">
+									<img src="../img/logos/wctb.png" alt="Wombourne Tennis, Cricket and Bowls Crest Badge" loading="lazy">
+								</a>
 							</li>
 							<li class="footer-list-item ml-sm-2 ml-md-0 mt-3 mt-sm-0 mt-md-3">
 								<a href="https://www.facebook.com/WombourneTennisClub" class="btn btn-sm brand-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -336,48 +338,6 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-		<script>
-			const bracketSlider = $('.carousel-data').on('init', function(slick) {
-		    	multiSlideHeightFix(this);
-	    	}).slick({
-		    	infinite: false,
-				prevArrow: $('.carousel-prev'),
-				nextArrow: $('.carousel-next'),
-		    	slidesToShow: 3,
-		    	slidesToScroll: 1,
-		    	responsive: [
-			    	{breakpoint: 992, settings: {slidesToShow: 2, slidesToScroll: 1}},
-		        	{breakpoint: 768, settings: {slidesToShow: 1, slidesToScroll: 1}}
-			    ]
-			}).on('beforeChange', function() {
-				$('.carousel-data').removeClass('bracket-height-fix');
-	    	}).on('afterChange', function(slick, currentSlide, nextSlide) {
-			    multiSlideHeightFix(this);
-			});
-
-			function multiSlideHeightFix(slider) {
-			    let active = [];
-			    let tallest = 0;
-
-			    setTimeout(function() {
-			        $('.slick-track .slick-active', slider).each(function(item) {
-			            active[item] = $(this).outerHeight();
-			        });
-			        active.forEach(function(item) {
-			            if (item > tallest) {
-			                tallest = item;
-			            }
-			        });
-		        	$('.slick-list', slider).height(tallest);
-			    }, 10);
-			    setTimeout(function() {
-			    	$('.carousel-data').addClass('bracket-height-fix');
-			    }, 10);
-			}
-
-			$(window).on('resize', function() {
-			    multiSlideHeightFix(bracketSlider);
-			});
-		</script>
+		<script src="../scripts/tournament_bracket.js?v=04-05-25"></script>
 	</body>
 </html>
