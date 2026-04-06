@@ -154,17 +154,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 col-12 d-none" data-date="23 Nov 2025 12:00:00">
-							<div class="card">
-								<img src="img/news/family_christmas_2025.jpg" class="card-img" alt="Family Christmas Tournament poster">
-								<div class="card-body">
-									<h5 class="card-title">Family Christmas Tournament</h5>
-									<h6 class="card-subtitle mb-2">23rd November 2025</h6>
-									<p class="card-text">It's time to get festive! Come and join us for some Christmas Family fun Sunday 14th December, 2pm-5pm for junior players of all abilities. Feel free to wear your best festive jumper or accessory!</p>
-									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/9d225227-265c-40b6-bbd7-1789a50ef6c7" target="_blank" class="btn btn-primary">Read more</a>
-								</div>
-							</div>
-						</div>
 					</div>
 					<div class="row carousel-actions justify-content-center"></div>
 				</div>
@@ -229,8 +218,8 @@
 					<h1 class="section-title">
 						<span class="bg-primary text-white">Upcoming Events</span>
 					</h1>
-					<p class="section-summary d-none">
-						<span class="bg-primary text-white">More events to be announced soon</span>
+					<p class="section-summary">
+						<span class="bg-primary text-white">, why not <a href="https://clubspark.lta.org.uk/WombourneTennisClub/Booking/BookByDate" target="_blank" class="text-white btn-link">Book a Court</a>.</span>
 					</p>
 					<div class="row">
 						<div class="col-5">
@@ -434,9 +423,11 @@
 				}
 			});
 
-			if (!hasActive) {
-				$('#home-events > .container > .section-summary').removeClass('d-none');
-			}
+			$('#home-events > .container > .section-summary').children()[0].prepend(
+				hasActive
+					? 'Waiting for the next event?'
+					: 'More events to be announced soon.  Until then'
+			);
 		</script>
 		<script type="text/javascript">
 			$(document).ready(function() {
