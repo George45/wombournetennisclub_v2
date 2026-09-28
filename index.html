@@ -82,7 +82,7 @@
 			</div>
 		</section>
 		<main>
-			<section id="home-crowdfunder" class="fund-tracker section-bg">
+			<section id="home-crowdfunder" class="fund-tracker section-bg d-none" data-release-date="01 Oct 2026 12:00:00">
 				<div class="container">
 					<h1 class="section-title">
 						<span class="bg-primary text-white">Fundraiser Campaign</span>
@@ -91,7 +91,7 @@
 						<span class="bg-primary text-white">We are running a crowdfunder campaign, raising money to install high safety netting around Wombourne Tennis Club.  We need to raise £8,000 to unlock Sport England's £8,000 match funding, so every £1 you donate gets doubled (up to £8,000).</span>
 					</p>
 					<p class="section-summary"><a href="https://www.crowdfunder.co.uk/p/protecting-our-players-high-safety-netting" class="btn btn-primary" target="_blank">Donate Here</a></p>
-					<div class="row py-3">
+					<div id="fund-tracker" class="row py-3">
 						<div class="col-12">
 							<div class="fund-tracker-wrap mb-3">
 								<div class="fund-tracker-base">
@@ -112,7 +112,7 @@
 									</svg>
 								</div>
 							</div>
-							<div id="fund-tracker-date" class="fund-tracker-date text-light">Last Updated: <span>-</span></div>
+							<div id="fund-tracker-date" class="fund-tracker-date text-light mt-4">Last Updated: <span>-</span></div>
 						</div>
 					</div>
 				</div>
@@ -125,6 +125,28 @@
 						<span class="bg-primary text-white">Latest News</span>
 					</h1>
 					<div id="news-list" class="row carousel-data">
+						<div class="col-md-4 col-sm-6 col-12 d-none" data-date="01 Oct 2026 12:00:00">
+							<div class="card">
+								<img src="img/news/crowdfunder_intro.png" class="card-img" alt="Crowdfunder campaign">
+								<div class="card-body">
+									<h5 class="card-title">Crowdfunder campaign for high safety netting</h5>
+									<h6 class="card-subtitle mb-2">1st October 2026</h6>
+									<p class="card-text">We're launching a crowdfunder campaign to raise money for installing high safety netting around Wombourne Tennis Club.</p>
+									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/448b6d6b-2231-4b79-99e9-264550dd5115">Read more</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-12 d-none" data-date="24 Sep 2026 12:00:00">
+							<div class="card">
+								<img src="img/news/crowdfunder_1.png" class="card-img" alt="Crowdfunder Preview">
+								<div class="card-body">
+									<h5 class="card-title">Crowdfunder fundraising campaign</h5>
+									<h6 class="card-subtitle mb-2">24th September 2026</h6>
+									<p class="card-text"> We will soon be launching a new fundraising campaign</p>
+									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/6a97f042-86a3-434f-8a75-bbb560327ce0" target="_blank" class="btn btn-primary">Read more</a>
+								</div>
+							</div>
+						</div>
 						<div class="col-md-4 col-sm-6 col-12 d-none" data-date="14 Aug 2026 12:00:00">
 							<div class="card">
 								<img src="img/news/30_off_aug_26.jpeg" class="card-img" alt="August 30% Off Membership Packages">
@@ -177,17 +199,6 @@
 									<h6 class="card-subtitle mb-2">7th June 2026</h6>
 									<p class="card-text">It's time for our annual Family Wimbledon Tournament.</p>
 									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/EventsV2/Summary/90831bd8-06bf-4f7f-9679-44d81983f9ee" target="_blank" class="btn btn-primary">Read more</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 col-12 d-none" data-date="02 Jun 2026 10:00:00">
-							<div class="card">
-								<img src="img/news/cpt_cup_men_1_2026.jpg" class="card-img" alt="Mens Captains Cup">
-								<div class="card-body">
-									<h5 class="card-title">Men's Captains Cup</h5>
-									<h6 class="card-subtitle mb-2">2nd June 2026</h6>
-									<p class="card-text">Join us for a competitive men's doubles mix-in with rotating partners on 13th June 10am-1pm. The players who win the most amount of games across all of our summer captains cup events are crowned as the champions.</p>
-									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/aba0f149-6d30-420e-924e-c20d134a4cf7" target="_blank" class="btn btn-primary">Read more</a>
 								</div>
 							</div>
 						</div>
@@ -531,6 +542,101 @@
 					prevArrow: '<button class="carousel-prev btn-' + theme + ' text-white mr-2"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>',
 					appendArrows: $("#home-news").find(".carousel-actions")
 				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var fundTrackerSection = $('#home-crowdfunder');
+				var fundTracker = $('#fund-tracker');
+				var fundTrackerLive = $('#fund-tracker-live');
+				var fundTrackerLiveBar = $('#fund-tracker-live-bar');
+				var fundTrackerTotal = $('#fund-tracker-total svg text');
+				var fundTrackerDate = $('#fund-tracker-date span');
+				var defaultData = {
+					amount: 0,
+					success: true,
+					updated: "1 Oct 2026 12:00:00"
+				}
+
+				function formatDateTime(dateString) {
+					const date = new Date(dateString);
+					const day = date.getDate();
+					const month = date.toLocaleString('en-GB', { month: 'long' });
+					const year = date.getFullYear();
+
+					const suffix = day % 10 === 1 && day !== 11
+						? 'st'
+						: day % 10 === 2 && day !== 12
+							? 'nd'
+							: day % 10 === 3 && day !== 13
+								? 'rd'
+								: 'th';
+
+					const time = date.toLocaleTimeString('en-GB', {
+						hour: '2-digit',
+						minute: '2-digit',
+						second: '2-digit',
+						hour12: false
+					});
+
+					return `${day}${suffix} ${month} ${year}, ${time}`;
+				}
+
+				function updateTracker(data, useFinalBackup) {
+					if (data.success) {
+						var percent = Math.round((data.amount / 8000) * 100).toFixed(1);
+						fundTrackerLive.attr('data-percent', percent);
+						fundTrackerLiveBar.css('width', percent + '%');
+
+						fundTrackerTotal.text('£' + data.amount);
+						fundTrackerDate.text(formatDateTime(data.updated));
+						fundTracker.removeClass('d-none');
+					} else {
+						if (useFinalBackup) {
+							updateTracker(defaultData, false);
+						}
+					}
+				}
+
+				function loadFromLocalStorage() {
+					var fundTrackerData = localStorage.getItem('fund-tracker');
+		
+					if (fundTrackerData) {
+						var data = JSON.parse(fundTrackerData);
+						if (data) {
+							updateTracker(data, true);
+						} else {
+							updateTracker(defaultData, false);
+						}
+					} else {
+						updateTracker(defaultData, false);
+					}
+				}
+
+				let releaseDate = fundTrackerSection.data('release-date') ?? null;
+			
+				if (releaseDate) {
+					releaseDate = new Date(releaseDate);
+
+					if (releaseDate < Date.now()) {
+						fundTrackerSection.removeClass('d-none');
+						fetch("https://crowdfunder-proxy.wombournetennisclub.workers.dev/")
+							.then(response => {
+								if (!response.ok) {
+									throw new Error(`HTTP error ${response.status}`);
+								}
+
+								return response.json();
+							})
+							.then(data => {
+								localStorage.setItem('fund-tracker', JSON.stringify(data));
+								updateTracker(data, true);
+							})
+							.catch(error => {
+								loadFromLocalStorage();
+							});
+					}
+				}
 			});
 		</script>
 	</body>

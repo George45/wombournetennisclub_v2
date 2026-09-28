@@ -388,13 +388,14 @@ section.fund-tracker .fund-tracker-live-bar{
 	max-width: calc(100% - 15px);
 	position: absolute;
 	top: 15px;
-	width: 100%;
+	transition: width ease 3s;
+	width: 0;
 	z-index: 3;
 }
 section.fund-tracker .fund-tracker-live::before{
 	color: white;
 	content: attr(data-percent) '%';
-	font-size: 45px;
+	font-size: 35px;
 	font-weight: bold;
 	margin: auto;
 	text-align: center;
@@ -429,6 +430,9 @@ section.fund-tracker .fund-tracker-goal svg text{
 	stroke-width: 10;
 	paint-order: stroke fill;
 	text-anchor: end;
+}
+section.fund-tracker .fund-tracker-date{
+	text-shadow: 1px 1px 1px black;
 }
 @media screen and (max-width: 575px){}
 @media screen and (min-width: 576px){}
