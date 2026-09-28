@@ -400,6 +400,36 @@ section.fund-tracker .fund-tracker-live::before{
 	text-align: center;
 	z-index: 3;
 }
+section.fund-tracker .fund-tracker-total{
+	position:absolute;
+	right: 0;
+	top:-1.2rem;
+}
+section.fund-tracker .fund-tracker-goal{
+	bottom:-2.2rem;
+	position:absolute;
+	right: 0;
+}
+section.fund-tracker .fund-tracker-total svg,
+section.fund-tracker .fund-tracker-goal svg{
+	height: 55px;
+}
+section.fund-tracker .fund-tracker-total svg text {
+	fill: red;
+	stroke: white;
+}
+section.fund-tracker .fund-tracker-goal svg text {
+	fill: black;
+	stroke: white;
+}
+section.fund-tracker .fund-tracker-total svg text,
+section.fund-tracker .fund-tracker-goal svg text{
+	font-size: 70px;
+	font-weight: bold;
+	stroke-width: 10;
+	paint-order: stroke fill;
+	text-anchor: end;
+}
 @media screen and (max-width: 575px){}
 @media screen and (min-width: 576px){}
 @media screen and (max-width: 767px){}
