@@ -589,13 +589,16 @@
 
 				function updateTracker(data, useFinalBackup) {
 					if (data.success) {
-						var percent = Math.round((data.amount / 8000) * 100).toFixed(1);
-						fundTrackerLive.attr('data-percent', percent);
-						fundTrackerLiveBar.css('width', percent + '%');
-
 						fundTrackerTotal.text('£' + data.amount);
 						fundTrackerDate.text(formatDateTime(data.updated));
+
 						fundTracker.removeClass('d-none');
+
+						setTimeout(function() {
+							var percent = Math.round((data.amount / 8000) * 100).toFixed(1);
+							fundTrackerLive.attr('data-percent', percent);
+							fundTrackerLiveBar.css('width', percent + '%');
+						}, 500)
 					} else {
 						if (useFinalBackup) {
 							updateTracker(defaultData, false);
