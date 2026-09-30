@@ -96,7 +96,7 @@
 							<div class="crowdfunder-widget" data-project-title="Safety netting needed at Wombourne Tennis Club" data-project-id="protecting-our-players-high-safety-netting" data-template-id="4285379753600212" data-theme="default" data-style-height="120px" data-style-width="256px"><a href="https://www.crowdfunder.co.uk/p/protecting-our-players-high-safety-netting" rel="noopener" target="_blank">Donate</a></div>
 						</div>
 					</div>
-					<div id="fund-tracker" class="row py-3">
+					<div id="fund-tracker" class="row py-3 d-none">
 						<div class="col-12">
 							<div class="fund-tracker-wrap mb-3">
 								<div class="fund-tracker-base">
@@ -634,8 +634,12 @@
 								return response.json();
 							})
 							.then(data => {
-								localStorage.setItem('fund-tracker', JSON.stringify(data));
-								updateTracker(data, true);
+								if (data.success) {
+									localStorage.setItem('fund-tracker', JSON.stringify(data));
+									updateTracker(data, true);
+								} else {
+									loadFromLocalStorage();
+								}
 							})
 							.catch(error => {
 								loadFromLocalStorage();
