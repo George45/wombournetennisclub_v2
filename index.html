@@ -83,13 +83,16 @@
 			</div>
 		</section>
 		<main>
-			<section id="home-crowdfunder" class="fund-tracker section-bg d-none" data-release-date="01 Oct 2026 12:00:00">
+			<section id="home-crowdfunder" class="fund-tracker section-bg">
 				<div class="container">
 					<h1 class="section-title">
 						<span class="bg-primary text-white">Fundraiser Campaign</span>
 					</h1>
 					<p class="section-summary">
 						<span class="bg-primary text-white">We are running a crowdfunder campaign, raising money to install high safety netting around Wombourne Tennis Club.  We need to raise £8,000 to unlock Sport England's £8,000 match funding, so every £1 you donate gets doubled (up to £8,000).</span>
+					</p>
+					<p class="section-summary">
+						<span class="bg-primary text-white">You can find out more on our <a href="https://www.crowdfunder.co.uk/p/protecting-our-players-high-safety-netting" rel="noopener" target="_blank" class="text-white btn-link">Crowdfunder page</a>.</span>
 					</p>
 					<div class="row">
 						<div class="col-12">
@@ -137,7 +140,7 @@
 									<h5 class="card-title">Crowdfunder campaign for high safety netting</h5>
 									<h6 class="card-subtitle mb-2">1st October 2026</h6>
 									<p class="card-text">We're launching a crowdfunder campaign to raise money for installing high safety netting around Wombourne Tennis Club.</p>
-									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/448b6d6b-2231-4b79-99e9-264550dd5115">Read more</a>
+									<a href="https://clubspark.lta.org.uk/WombourneTennisClub/News/448b6d6b-2231-4b79-99e9-264550dd5115" target="_blank" class="btn btn-primary">Read more</a>
 								</div>
 							</div>
 						</div>
@@ -551,7 +554,7 @@
 		</script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				var fundTrackerSection = $('#home-crowdfunder');
+				// var fundTrackerSection = $('#home-crowdfunder');
 				var fundTracker = $('#fund-tracker');
 				var fundTrackerLive = $('#fund-tracker-live');
 				var fundTrackerLiveBar = $('#fund-tracker-live-bar');
@@ -595,7 +598,7 @@
 						fundTracker.removeClass('d-none');
 
 						setTimeout(function() {
-							var percent = Math.round((data.amount / 8000) * 100).toFixed(1);
+							var percent = (Math.floor((data.amount / 8000) * 1000) / 10).toFixed(1);
 							fundTrackerLive.attr('data-percent', percent);
 							fundTrackerLiveBar.css('width', percent + '%');
 						}, 500)
@@ -621,34 +624,39 @@
 					}
 				}
 
-				let releaseDate = fundTrackerSection.data('release-date') ?? null;
-			
-				if (releaseDate) {
-					releaseDate = new Date(releaseDate);
+				function fetchCrowdfunder(attempts) {
+					fetch("https://crowdfunder-proxy.wombournetennisclub.workers.dev/")
+						.then(response => {
+							if (!response.ok) {
+								throw new Error(`HTTP error ${response.status}`);
+							}
 
-					if (releaseDate < Date.now()) {
-						fundTrackerSection.removeClass('d-none');
-						fetch("https://crowdfunder-proxy.wombournetennisclub.workers.dev/")
-							.then(response => {
-								if (!response.ok) {
-									throw new Error(`HTTP error ${response.status}`);
-								}
-
-								return response.json();
-							})
-							.then(data => {
-								if (data.success) {
-									localStorage.setItem('fund-tracker', JSON.stringify(data));
-									updateTracker(data, true);
-								} else {
-									loadFromLocalStorage();
-								}
-							})
-							.catch(error => {
+							return response.json();
+						})
+						.then(data => {
+							if (data.success) {
+								localStorage.setItem('fund-tracker', JSON.stringify(data));
+								updateTracker(data, true);
+							} else if (attempts < 2) {
+								setTimeout(function() {
+									fetchCrowdfunder(attempts + 1);
+								}, 1000);
+							} else {
 								loadFromLocalStorage();
-							});
-					}
+							}
+						})
+						.catch(error => {
+							if (attempts < 2) {
+								setTimeout(() => {
+									fetchCrowdfunder(attempt + 1);
+								}, 1000);
+							} else {
+								loadFromLocalStorage();
+							}
+						});	
 				}
+
+				fetchCrowdfunder(0);
 			});
 		</script>
 	</body>
